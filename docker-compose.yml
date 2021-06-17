@@ -1,0 +1,16 @@
+version: "3.7"
+services:  
+    #Jupyter notebook
+    jupyter-spark:
+        image: jupyter_test:1.0
+        networks:
+          - default_net
+        volumes:
+          - ./jupyter/data:/root/jupyter/data
+          - ./jupyter/ipynb:/root/jupyter/ipynb
+        ports:
+          - "9999:8888"     
+        command: /usr/local/bin/jupyter notebook --allow-root --ip=0.0.0.0 --port=8888
+
+networks:
+    default_net:
